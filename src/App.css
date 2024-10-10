@@ -1,38 +1,112 @@
-.App {
-  text-align: center;
-}
+/* Ensure the body and html take full height */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.backbase {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  height: 100vh; /* Full viewport height */
+}
+
+.chat-container {
+  width: 90%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  margin-bottom: 20px;
+  height: calc(100vh - 60px); /* Full height minus input area */
+}
+
+.chat-header {
+  text-align: center;
+  padding: 10px;
+  background-color: #007bff;
   color: white;
+  border-radius: 10px 10px 0 0;
+  margin: 0;
 }
 
-.App-link {
-  color: #61dafb;
+.message-list {
+  height: calc(100vh - 180px); /* Fixed height for message area */
+  padding: 10px;
+  overflow-y: auto; /* Enables scrolling for the chat messages */
+  display: flex;
+  flex-direction: column;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.message-bubble {
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  max-width: 70%;
+}
+
+.message-bubble.user {
+  background-color: #007bff;
+  color: white;
+  align-self: flex-end;
+}
+
+.message-bubble.bot {
+  background-color: #eaeaea;
+  align-self: flex-start;
+}
+
+.message-input-container {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  /* background-color: #f9f9f9; */
+  padding: 10px;
+}
+
+.message-input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+}
+
+.send-button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.avatar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.avatar-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+
+/* Ensuring full-height responsiveness */
+@media (max-width: 768px) {
+  .chat-container {
+    width: 95%;
   }
-  to {
-    transform: rotate(360deg);
+
+  .message-input-container {
+    width: 95%;
+  }
+
+  .message-list {
+    height: calc(100vh - 160px); /* Adjust height for smaller screens */
   }
 }
