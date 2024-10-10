@@ -17,7 +17,7 @@ const ChatApp = () => {
     }
   }, [transcript, listening]);
 
-  // Function to handle sending the message and generating the video
+  // Function to handle sending the message without making any POST request
   const handleSendMessage = async () => {
     if (userInput.trim() === '') return;
 
@@ -25,16 +25,16 @@ const ChatApp = () => {
     setMessages([...messages, newMessage]);
     setUserInput('');
 
-    // Call the D-ID API to generate video
+    // Commented out the API request logic
+    /*
     try {
       console.log('Sending message to bot...');
       setLoading(true);
 
-      // Post request to create the talking head video
       const response = await fetch('https://api.d-id.com/talks', {
         method: 'POST',
         headers: {
-          'Authorization': 'Basic ' + btoa('dmlqYXliYWxhcmFtMDVAZ21haWwuY29t:UdbQtr9JJGxq8E7h5ZtY-'), // Use your API key
+          'Authorization': 'Basic ' + btoa('YOUR_EMAIL:YOUR_API_KEY'), // Use your API key
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
@@ -49,14 +49,13 @@ const ChatApp = () => {
       const data = await response.json();
       const talkId = data.id;
 
-      // Poll the GET endpoint to check the status and get the video URL
       let videoReady = false;
       while (!videoReady) {
         console.log('Checking video processing status...');
         const getResponse = await fetch(`https://api.d-id.com/talks/${talkId}`, {
           method: 'GET',
           headers: {
-            'Authorization': 'Basic ' + btoa('dmlqYXliYWxhcmFtMDVAZ21haWwuY29t:UdbQtr9JJGxq8E7h5ZtY-'), // Use your API key
+            'Authorization': 'Basic ' + btoa('YOUR_EMAIL:YOUR_API_KEY'), // Use your API key
           },
         });
 
@@ -66,7 +65,7 @@ const ChatApp = () => {
           videoReady = true;
         } else {
           console.log('Video processing...');
-          await new Promise((resolve) => setTimeout(resolve, 2000)); // Wait for 2 seconds before checking again
+          await new Promise((resolve) => setTimeout(resolve, 2000));
         }
       }
       setLoading(false);
@@ -74,6 +73,7 @@ const ChatApp = () => {
       console.error('Error creating video:', error);
       setLoading(false);
     }
+    */
   };
 
   // Handle when avatar is clicked to start speech recognition
@@ -106,7 +106,6 @@ const ChatApp = () => {
   );
 };
 
-// Component to display chat messages
 const MessageList = ({ messages }) => {
   return (
     <div className="message-list">
@@ -122,7 +121,6 @@ const MessageList = ({ messages }) => {
   );
 };
 
-// Component to handle user input
 const MessageInput = ({ userInput, setUserInput, handleSendMessage }) => {
   return (
     <div className="message-input-container">

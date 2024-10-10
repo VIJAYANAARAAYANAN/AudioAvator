@@ -17,6 +17,7 @@
   border-radius: 10px;
   background-color: #f9f9f9;
   margin-bottom: 20px;
+  margin: auto auto;
   height: calc(100vh - 60px); /* Full height minus input area */
 }
 
@@ -62,7 +63,7 @@
   max-width: 700px;
   display: flex;
   /* background-color: #f9f9f9; */
-  padding: 10px;
+  /* padding: 10px; */
 }
 
 .message-input {
