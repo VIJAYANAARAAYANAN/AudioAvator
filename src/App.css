@@ -64,6 +64,7 @@
   display: flex;
   /* background-color: #f9f9f9; */
   /* padding: 10px; */
+  margin-bottom: 10px;
 }
 
 .message-input {
@@ -88,14 +89,26 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  background-color: white;
 }
 
 .avatar-image {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 130px;
   border-radius: 50%;
 }
 
+.avatar-container video,
+.avatar-container img {
+  width: 140px;
+  height: 130px;
+  border-radius: 50%;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.avatar-container img {
+  display: block;
+}
 
 /* Ensuring full-height responsiveness */
 @media (max-width: 768px) {
